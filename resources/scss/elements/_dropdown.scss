@@ -1,0 +1,56 @@
+.dropdown-menu {
+    font-size: var(--step-n1);
+    border: none;
+    background-color: $white;
+
+    &.show {
+        display: block;
+        animation-duration: 0.3s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: dropDownSlideIn;
+        animation-name: dropDownSlideIn;
+        position: absolute !important;
+        top: 100% !important;
+        will-change: transform;
+    }
+
+    li {
+        margin-bottom: 0;
+
+        .dropdown-item {
+            border-radius: $border-radius;
+            transition: background-color 0.3s ease !important;
+
+            &:hover {
+                background-color: $brand-gray-light;
+            }
+
+            &-danger {
+                color: $brand-red;
+
+                &:hover, &:active {
+                    background-color: $brand-red-light;
+                }
+            }
+        }
+    }
+}
+
+@keyframes dropDownSlideIn {
+    0% {
+        -webkit-transform: translateY(1rem);
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0rem);
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+    0% {
+        -webkit-transform: translateY(1rem);
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+}

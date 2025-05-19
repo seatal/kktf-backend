@@ -1,0 +1,387 @@
+// Transitions
+.transition {
+    &-slow {
+        transition: all 0.5s ease !important;
+    }
+
+    &-fast {
+        transition: all 0.3s ease !important;
+    }
+}
+
+// Links
+.link {
+    &-styled {
+        font-weight: 400 !important;
+        position: relative !important;
+        text-decoration: none !important;
+        color: $brand-red !important;
+        @include p2;
+
+        &::after {
+            border: 1px dashed $brand-red;
+            bottom: -4px !important;
+            content: "" !important;
+            left: 0 !important;
+            position: absolute !important;
+            width: 100% !important;
+            @extend .transition-fast;
+        }
+
+        &:hover {
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.disabled,
+            &:disabled {
+                opacity: 0.8;
+                color: $brand-red !important;
+            }
+
+            &::after {
+                opacity: 0.2;
+            }
+        }
+
+        &--dark-green {
+            color: $brand-green-dark !important;
+
+            &::after {
+                border: 1px dashed $brand-green-dark;
+            }
+
+            &:hover {
+
+                &:hover,
+                &:focus,
+                &:active,
+                &.disabled,
+                &:disabled {
+                    opacity: 0.8;
+                    color: $brand-green-dark !important;
+                }
+            }
+        }
+    }
+}
+
+// Truncating the paragraphs
+.truncate {
+    &--1-line {
+        @include ellipsis(30px, 1);
+    }
+
+    &--2-line {
+        @include ellipsis(58px, 2);
+    }
+
+    &--3-line {
+        @include ellipsis(84px, 3);
+    }
+}
+
+// Background Variations
+.bg {
+    &-cover {
+        background-size: cover !important;
+    }
+
+    &-position {
+        &-center {
+            background-position: center center !important;
+        }
+    }
+
+    &-no-repeat {
+        background-repeat: no-repeat !important;
+    }
+
+    &-transparent {
+        background-color: transparent !important;
+    }
+}
+
+// Text Styling
+.text {
+    &-line-through {
+        text-decoration: line-through !important;
+    }
+
+    &-underline {
+        text-decoration: underline !important;
+    }
+
+    &-indent {
+        text-indent: -9999px !important;
+    }
+
+    &-indent-0 {
+        text-indent: 0 !important;
+    }
+}
+
+// Image Full Screen
+.full-screen {
+    @extend .bg-cover;
+    @extend .bg-no-repeat;
+    @extend .bg-position-center;
+}
+
+// Positions
+.position {
+    &-l-0 {
+        left: 0 !important;
+    }
+
+    &-r-0 {
+        right: 0 !important;
+    }
+
+    &-b-0 {
+        bottom: 0 !important;
+    }
+
+    &-t-0 {
+        top: 0 !important;
+    }
+
+    &-lt-0 {
+        @extend .position-l-0;
+        @extend .position-t-0;
+    }
+
+    &-rt-0 {
+        @extend .position-r-0;
+        @extend .position-t-0;
+    }
+
+    &-lb-0 {
+        @extend .position-l-0;
+        @extend .position-b-0;
+    }
+}
+
+// Overflow Variations
+.overflow {
+    &-auto {
+        overflow: auto !important;
+    }
+
+    &-x {
+        overflow-x: hidden !important;
+    }
+
+    &-y {
+        overflow-y: hidden !important;
+    }
+}
+
+// Width Variations
+.w {
+    &-100-vw {
+        width: 100vw !important;
+    }
+}
+
+// height Variations
+.h {
+    &-100-vh {
+        height: 100vh !important;
+    }
+}
+
+// Image Fit
+.object {
+    &-fit {
+        object-fit: cover !important;
+    }
+
+    &-position {
+        &-center {
+            object-position: center !important;
+        }
+    }
+}
+
+// Transform
+.transform {
+    &-xy-center {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+// Section gutter
+.section {
+    &-gutter,
+    &-gutter-md {
+        padding-bottom: 32px;
+        padding-top: 32px;
+
+        @include media-breakpoint-up(sm) {
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
+    }
+
+    &-gutter {
+        @include media-breakpoint-up(md) {
+            padding-bottom: 60px;
+            padding-top: 60px;
+        }
+    }
+
+    &-gutter-md {
+        @include media-breakpoint-up(md) {
+            padding-bottom: 52px;
+            padding-top: 52px;
+        }
+    }
+}
+
+.border-section {
+    border-left: 0.8rem solid $body-bg;
+    border-right: 0.8rem solid $body-bg;
+
+    > .section-border-radius {
+        border-radius: 0.8rem;
+        overflow: hidden;
+    }
+}
+
+.border-lg-end {
+    @include media-breakpoint-up(lg) {
+        border: 0;
+        border-right-width: 1px;
+        border-style: dashed;
+    }
+}
+
+.border-lg-start {
+    @include media-breakpoint-up(lg) {
+        border: 0;
+        border-left-width: 1px;
+        border-style: dashed;
+    }
+}
+
+.close-button {
+    top: 2rem;
+    right: 2rem;
+    appearance: none;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.badge {
+    --sm-badge-color: #434343;
+    --sm-badge-font-size: var(--step-n2);
+    --sm-badge-font-weight: 400;
+    --sm-badge-padding-x: 1rem;
+    --sm-badge-padding-y: 0.5rem;
+
+    &-outlined {
+        border-style: solid;
+        border-width: 1px;
+    }
+}
+
+.shadow-default {
+    box-shadow: 0 0 0.8rem #0000000d;
+}
+
+.shadow-inset {
+    box-shadow: inset 0px 0px 15px -5px rgba(0, 0, 0, 0.1);
+    width: 6rem;
+}
+
+th.shadow-inset {
+    box-shadow: none;
+}
+
+th.p-filter-column:empty {
+    padding: 0;
+    border: 0 !important;
+}
+
+.text-brand-red {
+    color: $brand-red-dark !important;
+}
+
+.text-brand-coffee {
+    color: $brand-coffee !important;
+}
+
+.text-brand-success {
+    color: $brand-teal !important;
+}
+
+.text-brand-red-emphasis {
+    color: $brand-red-text-emphasis !important;
+}
+
+.bg-brand-red-subtle {
+    background-color: $brand-red-bg-subtle !important;
+}
+
+.border-brand-red-subtle {
+    border-color: $brand-red-border-subtle !important;
+}
+
+.text-brand-teal-emphasis {
+    color: $brand-teal-text-emphasis !important;
+}
+
+.bg-brand-teal-subtle {
+    background-color: $brand-teal-bg-subtle !important;
+}
+
+.bg-brand-warning-subtle {
+    background-color: $warning-bg-subtle !important;
+}
+
+.border-brand-teal-subtle {
+    border-color: $brand-teal-border-subtle !important;
+}
+
+.border-bottom-primary-mid {
+    border-bottom: 1px solid $brand-green-mid !important;
+}
+
+.text-purple-emphasis {
+    color: $purple-text-emphasis !important;
+}
+
+.bg-purple-subtle {
+    background-color: $purple-bg-subtle !important;
+}
+
+.border-purple-subtle {
+    border-color: $purple-border-subtle !important;
+}
+
+.border-top-sm-start {
+    border-width: 0;
+    border-top-width: 1px;
+    border-style: dashed;
+    padding-top: 18px;
+    margin-top: 10px;
+
+    @include media-breakpoint-up(sm) {
+        border-width: 0;
+        border-left-width: 1px;
+        padding-left: 20px;
+    }
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-70 {
+    width: 70%;
+}

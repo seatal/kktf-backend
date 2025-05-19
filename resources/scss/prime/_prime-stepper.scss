@@ -1,0 +1,265 @@
+@use 'sass:math';
+
+//core
+.p-stepper .p-stepper-nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-x: auto;
+}
+
+.p-stepper-vertical .p-stepper-nav {
+    flex-direction: column;
+}
+
+.p-stepper-header {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+
+    &:last-of-type {
+        flex: initial;
+    }
+}
+
+.p-stepper-header .p-stepper-action {
+    border: 0 none;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:focus-visible {
+        @include focused();
+    }
+}
+
+.p-stepper.p-stepper-readonly .p-stepper-header {
+    cursor: auto;
+}
+
+.p-stepper-header.p-highlight .p-stepper-action {
+    cursor: default;
+}
+
+.p-stepper-title {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 1.4rem;
+
+    @include media-breakpoint-up(md) {
+        font-size: 1.6rem;
+    }
+}
+
+.p-stepper-number {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-stepper-separator {
+    flex: 1 1 0;
+}
+
+//theme
+.p-stepper {
+    .p-stepper-nav {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .p-stepper-header {
+        padding: $inlineSpacing 0;
+
+        @include media-breakpoint-up(md) {
+            padding: $inlineSpacing $inlineSpacing calc($inlineSpacing * 3);
+        }
+
+        .p-stepper-action {
+            transition: $listItemTransition;
+            border-radius: $borderRadius;
+            background: transparent;
+            outline-color: transparent;
+            padding: 0;
+
+            .p-stepper-number {
+                color: $brand-green;
+                border: 1px solid $brand-green;
+                background: $brand-green-mid;
+                min-width: calc($stepsItemNumberWidth / 1.25);
+                height: calc($stepsItemNumberHeight / 1.25);
+                font-size: 1.2rem;
+                line-height: $stepsItemNumberHeight;
+                border-radius: $stepsItemNumberBorderRadius;
+                transition: $actionIconTransition;
+
+                @include media-breakpoint-up(md) {
+                    min-width: $stepsItemNumberWidth;
+                    height: $stepsItemNumberHeight;
+                    font-size: $stepsItemNumberFontSize;
+                }
+            }
+
+            .p-stepper-title {
+                margin-left: calc($inlineSpacing * 2);
+                color: $brand-green;
+                font-weight: $stepsItemActiveFontWeight;
+                transition: $actionIconTransition;
+
+                @include media-breakpoint-up(md) {
+                    margin-left: calc($inlineSpacing * 3);
+                }
+            }
+
+            &:not(.p-disabled):focus-visible {
+                @include focused();
+            }
+        }
+
+        &.p-highlight {
+            .p-stepper-number {
+                background: $brand-coffee;
+                color: $white;
+            }
+
+            .p-stepper-title {
+                color: $brand-coffee;
+            }
+        }
+
+        &:not(.p-disabled):focus-visible {
+            @include focused();
+        }
+
+        &:has(~ .p-highlight) {
+            @if variable-exists(primaryColor) {
+                .p-stepper-separator {
+                    background-color: $primaryColor;
+                }
+            }
+        }
+    }
+
+    .p-stepper-panels {
+        background: transparent;
+        padding: $tabviewContentPadding;
+        color: $tabviewContentTextColor;
+    }
+
+    .p-stepper-separator {
+        background-color: $brand-coffee;
+        width: 100%;
+        height: 2px;
+        margin-inline-start: calc($inlineSpacing * 2);
+        transition: $listItemTransition;
+    }
+
+    &.p-stepper-vertical {
+        display: flex;
+        flex-direction: column;
+
+        .p-stepper-toggleable-content {
+            display: flex;
+            flex: 1 1 auto;
+            background: transparent;
+            color: $tabviewContentTextColor;
+        }
+
+        .p-stepper-panel {
+            display: flex;
+            flex-direction: column;
+            flex: initial;
+
+            .p-stepper-header {
+                flex: initial;
+
+                &.p-disabled {
+                    opacity: 1;
+                }
+            }
+
+            &.p-stepper-panel-active {
+                flex: 1 1 auto;
+
+
+                & ~ .p-stepper-panel {
+                    .p-stepper-header {
+                        &.p-disabled {
+                            opacity: 0.6;
+                        }
+                    }
+
+                    .p-stepper-number {
+                        background: $stepsItemBg;
+                        color: $stepsItemNumberColor;
+                    }
+
+                    .p-stepper-title {
+                        color: $stepsItemTextColor;
+                    }
+                }
+            }
+
+
+            .p-stepper-content {
+                width: 100%;
+                margin-left: calc($inlineSpacing * 5);
+                margin-bottom: calc($inlineSpacing * 4);
+                padding: calc($inlineSpacing * 4);
+                padding-top: calc($inlineSpacing * 5);
+                background-color: $white;
+                border-radius: 10px;
+                @extend .shadow-slight;
+
+                @include media-breakpoint-up(md) {
+                    margin-left: calc($inlineSpacing * 6);
+                    padding: calc($inlineSpacing * 6);
+                    padding-top: calc($inlineSpacing * 7);
+                    margin-bottom: calc($inlineSpacing * 6);
+                }
+            }
+
+            .p-stepper-separator {
+                flex: 0 0 auto;
+                width: 2px;
+                height: auto;
+                margin-inline-start: calc($inlineSpacing * 4 / 2 + 2px);
+
+                @include media-breakpoint-up(md) {
+                    margin-inline-start: calc($inlineSpacing * 8 / 2 + 2px);
+                }
+            }
+
+            &:has(~ .p-stepper-panel-active) {
+                @if variable-exists(primaryColor) {
+                    .p-stepper-separator {
+                        background-color: $primaryColor;
+                    }
+                }
+            }
+
+            &:last-of-type {
+                .p-stepper-content {
+                    margin-left: 3.9rem;
+
+                    @include media-breakpoint-up(md) {
+                        margin-left: 5.6rem;
+                    }
+                }
+            }
+        }
+    }
+}

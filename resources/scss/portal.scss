@@ -1,0 +1,15 @@
+/* ==============================================
+   Global App SCSS
+   ============================================== */
+
+@import "./common";
+
+// Add additional custom code here
+
+// 1. Global Components to use
+// @import 'layout/header';
+
+@import 'portal-layouts/sidebar';
+@import 'portal-layouts/main';
+@import 'prime/prime';
+

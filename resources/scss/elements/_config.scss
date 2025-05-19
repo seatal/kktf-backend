@@ -1,0 +1,421 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+body {
+    letter-spacing: normal;
+    @include font-smoothing(on);
+    @include bodyFont();
+    font-size: var(--step-1);
+    line-height: 1.3;
+
+    @include media-breakpoint-up(md) {
+        line-height: 1.4;
+    }
+
+    &.prevent-scrolling {
+        @extend .overflow-hidden, .position-fixed, .w-100;
+
+        top: auto;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+a,
+button,
+.btn {
+    @extend .transition-fast;
+}
+
+p {
+    @include bodyFont();
+    font-size: var(--step-1);
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+
+    @include media-breakpoint-up(md) {
+        line-height: 1.4;
+        margin-bottom: 2rem;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+ul,
+ol {
+    padding-left: 2.2rem;
+    margin-bottom: 0;
+
+    > li {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::marker {
+            color: $brand-red-dark;
+        }
+    }
+}
+
+.list-style-none {
+    list-style: none;
+}
+
+b,
+strong {
+    font-weight: $font-weight-medium;
+}
+
+figure {
+    margin-bottom: 0;
+}
+
+img {
+    @extend .mw-100;
+    height: auto;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button,
+.btn,
+.btn-link {
+    text-decoration: none;
+
+    &:hover {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+@include media-breakpoint-down(sm) {
+    .m-ratio-4x3 {
+        --sm-aspect-ratio: calc(4 / 3 * 100%)
+    }
+}
+
+.lh-1 {
+    line-height: 1;
+}
+
+.form-control,
+.form-label,
+.form-select {
+    font-size: var(--step-n1);
+}
+
+.form-control-sm, .form-select-sm {
+    font-size: var(--step-n2);
+    padding: 0.7rem 2rem 0.7rem 1.2rem;
+}
+
+.form-control, .form-select {
+    background-color: $brand-offwhite;
+    border-color: $brand-green-mid;
+
+    &:focus, &:focus-visible{
+        background-color: $brand-green-light !important;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active  {
+        color : $brand-text !important;
+        -webkit-text-fill-color: $brand-text !important;
+        -webkit-box-shadow: 0 0 0 1000px $brand-green-light inset !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+    }
+}
+
+.button-radio {
+    .btn-outline-primary {
+        &:hover, &:active, &:focus, &:focus-visible {
+            color: $primary !important;
+            background-color: $brand-green-light;
+        }
+
+        &::before {
+            display: none;
+        }
+    }
+
+    input:checked ~ .btn-outline-primary {
+        background-color: $primary;
+        color: $white !important;
+    }
+
+    input:focus-visible ~ .btn-outline-primary {
+        box-shadow: inset 0 0 0 0.1rem #DC143C;
+    }
+}
+
+.border-dashed {
+    --sm-border-style: dashed;
+    border-style: dashed;
+}
+
+@include media-breakpoint-up(md) {
+    .btn.w-md-auto {
+        width: auto !important;
+    }
+}
+
+.theme-app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+
+    .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theme-footer, .theme-contact-us {
+        margin-top: auto;
+    }
+}
+
+dialog {
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    pointer-events: none;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.3);
+        animation: modal-pop 0.2s ease-out;
+        position: fixed;
+        inset: 0;
+    }
+
+    @include media-breakpoint-up(md) {
+        align-items: center;
+    }
+
+    .dialog-content-wrapper {
+        width: 100%;
+        position: relative;
+        background-color: white;
+        border-radius: 1rem 1rem 0 0;
+        transform: translateY(100%);
+        transition: 0.3s ease-in-out transform,
+        0.3s ease-in-out scale;
+        will-change: transform;
+        opacity: 0;
+        animation: closeModal 0.2s ease-out;
+
+        @include media-breakpoint-up(md) {
+            max-width: 60rem;
+            margin-top: 4rem;
+            margin-right: auto;
+            margin-left: auto;
+            border-radius: 1rem;
+            transform: none;
+            scale: 0.99;
+        }
+
+        .modal-content {
+            max-height: 50vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .modal-footer {
+            position: sticky;
+            bottom: -16px;
+            background-color: #fff;
+            border-top: 1px solid $brand-green-light;
+            margin-bottom: -16px;
+            will-change: transform;
+        }
+    }
+
+    &[open] {
+        pointer-events: all;
+
+        .dialog-content-wrapper {
+            transform: translateY(0);
+            opacity: 1;
+
+            @include media-breakpoint-up(md) {
+                scale: 1;
+                transform: none;
+            }
+        }
+    }
+
+    .dialog-content-backdrop-faker {
+        all: unset;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-color: transparent;
+    }
+}
+
+@keyframes modal-pop {
+    0% {
+        opacity: 0;
+    }
+}
+
+.drawer-submit-btn {
+    position: sticky;
+    bottom: -20px;
+    padding: 20px;
+    margin: -20px !important;
+    margin-top: 0 !important;
+    z-index: 9;
+    background-color: $body-bg;
+    will-change: transform;
+}
+
+.otp-input input {
+    letter-spacing: 10px;
+    width: 200px !important;
+    margin: auto !important;
+    font-size: 20px;
+    text-align: center;
+    text-indent: 10px;
+    border-radius: 6px;
+
+    &::placeholder {
+        letter-spacing: 10px;
+        font-size: 16px;
+        text-indent: 0;
+    }
+}
+
+.text-wrap-balance {
+    text-wrap: balance;
+}
+
+.error-page-logo img {
+    max-height: 26px;
+
+    @include media-breakpoint-up(md) {
+        max-height: 40px;
+    }
+}
+
+.text-decoration-underline--under {
+    text-underline-position: under;
+}
+
+.auth-logo-wrapper {
+    max-width: 200px;
+}
+
+.shadow-slight {
+    box-shadow: 0 0.4rem 3rem #45533e0d;
+}
+
+.fieldset-wrapper {
+    border: 1px dashed $brand-green-mid;
+    position: relative;
+    margin-bottom: 32px;
+    padding-top: 28px;
+    padding-bottom: 8px;
+    padding-inline: 24px;
+    border-radius: 10px;
+
+    @include media-breakpoint-up(md) {
+        padding-bottom: 0;
+    }
+}
+
+.fieldset-legend {
+    top: 0;
+    transform: translateY(-50%);
+    background-color: $white;
+    font-weight: 300;
+    font-size: var(--step-n2);
+    position: absolute;
+    width: auto !important;
+    padding: 4px 8px;
+    margin-inline: -8px;
+}
+
+.p-stepper-header {
+    position: sticky;
+    top: 0;
+}
+
+.p-stepper.p-stepper-vertical .p-stepper-toggleable-content {
+    position: relative;
+}
+
+.p-stepper-separator {
+    z-index: -1;
+    position: relative;
+}
+
+.calendar-genrate-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2;
+    border-radius: 0;
+    border-color: $brand-green-mid;
+
+    &:focus, &:focus-visible{
+        background-color: $brand-green-light !important;
+        border-radius: 2 !important;
+    }
+}
+
+svg.rise-shake {
+    animation: jump-shaking 2s infinite;
+}
+
+@keyframes jump-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateY(-28px) }
+    35% { transform: translateY(-28px) rotate(5deg) }
+    55% { transform: translateY(-28px) rotate(-5deg) }
+    65% { transform: translateY(-28px) rotate(5deg) }
+    75% { transform: translateY(-28px) rotate(-5deg) }
+    100% { transform: translateY(0) rotate(0) }
+}

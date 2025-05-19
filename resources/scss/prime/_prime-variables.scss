@@ -1,0 +1,189 @@
+//reused color variables
+$shade000:$white !default;    //surface
+$shade100:$brand-green-light !default;    //header background
+$shade200:#e9ecef !default;    //hover background
+$shade300:#dee2e6 !default;    //border, divider
+$shade400:#ced4da !default;    //input border
+$shade500:#adb5bd !default;    //unused
+$shade600:#8c8882 !default;    //text secondary color
+$shade700:#434343 !default;    //text color
+$shade800:#343a40 !default;
+$shade900:#212529 !default;    //unused
+
+//global
+$textSecondaryColor:$shade600 !default;
+$borderRadius:5px !default;
+$transitionDuration:.2s !default;
+$formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
+$actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
+$listItemTransition:box-shadow $transitionDuration !default;
+$primeIconFontSize:1.4rem !default;
+$divider: 1px solid $brand-green-mid !default;
+$inlineSpacing:.5rem !default;
+$disabledOpacity:.6 !default;
+$maskBg:rgba(0, 0, 0, 0.4) !default;
+$loadingIconFontSize:2rem !default;
+$errorColor:$brand-red !default;
+
+//focus
+$focusOutlineColor:  rgba($primary, $focus-ring-opacity) !default;
+$focusOutline:0 none !default;
+$focusOutlineOffset:0 !default;
+$inputFocusOutlineOffset:$focusOutlineOffset !default;
+$focusShadow:0 0 0 0.25rem $focusOutlineColor !default;
+
+//action icons
+$actionIconWidth:2.8rem !default;
+$actionIconHeight:2.8rem !default;
+$actionIconBg:transparent !default;
+$actionIconBorder:0 none !default;
+$actionIconColor:$shade600 !default;
+$actionIconHoverBg:$brand-red !default;
+$actionIconHoverBorderColor:transparent !default;
+$actionIconHoverColor:$shade000 !default;
+$actionIconBorderRadius:50% !default;
+
+$submenuHeaderMargin:0 !default;
+$submenuHeaderPadding:.75rem 1.25rem !default;
+$submenuHeaderBg:$shade000 !default;
+$submenuHeaderTextColor:$shade800 !default;
+$submenuHeaderBorderRadius:0 !default;
+$submenuHeaderFontWeight:500 !default;
+
+//input field (e.g. inputtext, spinner, inputmask)
+$inputPadding:.75rem .75rem !default;
+$inputBg:$shade000 !default;
+$inputIconColor:$shade600 !default;
+$inputBorder:1px solid $shade400 !default;
+$inputHoverBorderColor:$primaryColor !default;
+$inputFocusBorderColor: tint-color($primaryColor, 50%) !default;
+$inputErrorBorderColor: $errorColor !default;
+$inputPlaceholderTextColor:$shade600 !default;
+$inputFilledBg:$shade200 !default;
+$inputFilledHoverBg:$inputFilledBg !default;
+$inputFilledFocusBg:$shade000 !default;
+
+//input groups
+$inputGroupAddOnMinWidth: 3rem !default;
+
+//input lists (e.g. dropdown, autocomplete, multiselect, orderlist)
+$inputListBg:$shade000 !default;
+$inputListTextColor:$shade700 !default;
+$inputListPadding:.75rem 0 !default;
+$inputListItemPadding:.75rem 1.25rem !default;
+$inputListItemBg:transparent !default;
+$inputListItemTextColor:$shade700 !default;
+$inputListItemHoverBg:$shade200 !default;
+$inputListItemTextHoverColor:$shade700 !default;
+$inputListItemFocusBg:$shade300 !default;
+$inputListItemTextFocusColor:$shade700 !default;
+$inputListItemBorder:0 none !default;
+$inputListItemBorderRadius:0 !default;
+$inputListItemMargin: 0 !default;
+$inputListItemFocusShadow:inset 0 0 0 0.15rem $focusOutlineColor !default;
+$inputListHeaderPadding:.75rem 1.25rem !default;
+$inputListHeaderMargin:0 !default;
+$inputListHeaderBg:$shade100 !default;
+$inputListHeaderTextColor:$shade800 !default;
+$inputListHeaderBorder:1px solid $shade300 !default;
+
+//inputs with overlays (e.g. autocomplete, dropdown, multiselect)
+$inputOverlayBg:$inputListBg !default;
+$inputOverlayHeaderBg:$inputListHeaderBg !default;
+$inputOverlayBorder:0 none !default;
+$inputOverlayShadow:0 2px 12px 0 rgba(0,0,0,.1) !default;
+//button
+$buttonIconOnlyWidth:3rem !default;
+
+$menuWidth: 20rem !default;
+$menuSeparatorMargin: 0 !default;
+$panelContentPadding: 0.9136rem 1.2rem !default;
+$panelFooterPadding: 0.9136rem 1.2rem !default;
+
+//paginator
+$paginatorBg:$shade000 !default;
+$paginatorTextColor:$shade600 !default;
+$paginatorBorder:solid $shade200 !default;
+$paginatorBorderWidth:0 !default;
+$paginatorPadding:.5rem 1rem !default;
+$paginatorElementWidth:$buttonIconOnlyWidth !default;
+$paginatorElementHeight:$buttonIconOnlyWidth !default;
+$paginatorElementBg:transparent !default;
+$paginatorElementBorder:0 none !default;
+$paginatorElementIconColor:$shade600 !default;
+$paginatorElementHoverBg:$shade200 !default;
+$paginatorElementHoverBorderColor:transparent !default;
+$paginatorElementIconHoverColor:$shade800 !default;
+$paginatorElementBorderRadius:50% !default;
+$paginatorElementMargin:.143rem !default;
+$paginatorElementPadding:0 !default;
+
+//table
+$tableHeaderBorder:1px solid $shade300 !default;
+$tableHeaderBorderWidth:1px 0 1px 0 !default;
+$tableHeaderBg:$shade100 !default;
+$tableHeaderTextColor:$shade800 !default;
+$tableHeaderFontWeight:500 !default;
+$tableHeaderPadding: 0.5rem 1rem !default;
+
+$tableHeaderCellPadding: 1rem 1rem !default;
+$tableHeaderCellBg:$shade100 !default;
+$tableHeaderCellTextColor:$shade800 !default;
+$tableHeaderCellFontWeight:500 !default;
+$tableHeaderCellBorder:1px solid $shade300 !default;
+$tableHeaderCellBorderWidth:0 0 1px 0 !default;
+$tableHeaderCellHoverBg: $highlightFocusBg !default;
+$tableHeaderCellTextHoverColor:$shade800 !default;
+$tableHeaderCellIconColor:$shade800 !default;
+$tableHeaderCellIconHoverColor:$shade800 !default;
+$tableHeaderCellHighlightBg:$highlightBg !default;
+$tableHeaderCellHighlightTextColor:$highlightTextColor !default;
+$tableHeaderCellHighlightHoverBg:$highlightBg !default;
+$tableHeaderCellHighlightTextHoverColor:$highlightTextColor !default;
+$tableSortableColumnBadgeSize:1.143rem !default;
+
+$tableBodyRowBg:$shade000 !default;
+$tableBodyRowTextColor:$shade700 !default;
+$tableBodyRowEvenBg:#f8f8fa !default;
+$tableBodyRowHoverBg:$shade200 !default;
+$tableBodyRowTextHoverColor:$shade700 !default;
+$tableBodyCellBorder:1px solid $shade300 !default;
+$tableBodyCellBorderWidth:0 0 1px 0 !default;
+$tableBodyCellPadding: 0.5rem 1rem !default;
+
+$tableFooterCellPadding: 0.5rem 1rem !default;
+$tableFooterCellBg:$shade100 !default;
+$tableFooterCellTextColor:$shade800 !default;
+$tableFooterCellFontWeight:500 !default;
+$tableFooterCellBorder:1px solid $shade300 !default;
+$tableFooterCellBorderWidth:0 0 1px 0 !default;
+$tableResizerHelperBg:$primaryColor !default;
+
+$tableFooterBorder:1px solid $shade300 !default;
+$tableFooterBorderWidth:0 0 1px 0 !default;
+$tableFooterBg:$shade100 !default;
+$tableFooterTextColor:$shade800 !default;
+$tableFooterFontWeight:500 !default;
+$tableFooterPadding: 0.5rem 1rem !default;
+
+$tableCellContentAlignment:left !default;
+$tableTopPaginatorBorderWidth:0 0 1px 0 !default;
+$tableBottomPaginatorBorderWidth:0 0 1px 0 !default;
+
+//steps
+$timelineEventColor:$shade300 !default;
+$panelContentBg:$shade000 !default;
+$panelContentTextColor:$shade700 !default;
+$tabviewContentBg:$panelContentBg !default;
+$tabviewContentTextColor:$panelContentTextColor !default;
+$tabviewContentPadding:$panelContentPadding !default;
+
+$stepsItemBg:$shade000 !default;
+$stepsItemBorder:1px solid $shade200 !default;
+$stepsItemTextColor:$shade600 !default;
+$stepsItemNumberWidth:3.6rem !default;
+$stepsItemNumberHeight:3.6rem !default;
+$stepsItemNumberFontSize:1.6rem !default;
+$stepsItemNumberColor:$shade700 !default;
+$stepsItemNumberBorderRadius:50% !default;
+$stepsItemActiveFontWeight: 300 !default;

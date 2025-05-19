@@ -1,0 +1,153 @@
+/* ==============================================
+   /**
+     * CONTENTS
+     *
+     * 1.SETTINGS
+     * Path............... Project-level path and variables.
+     * Global Vars................. Global variables
+     * Utilities.................. Helper Classes
+     *
+     * 2.TOOLS
+     * Mixins...............Mixin for different purposes.
+     *
+     * 3.GENERIC
+     *
+     * Reboot........ //A level playing field using @necolas’ Normalize.css. used by  bootstrap
+     * fonts................ Fonts Used on site
+     *
+     * 4.ELEMENTS
+     * Page.................Set up our document’s default `font-size` and
+     *                      `line-height`.
+     * Headings.............Very minimal (i.e. only font-size information) for
+     *                      headings 1 through 6.
+     * Images...............Base image styles.
+     * Tables...............Simple table styles.
+     * Buttons.............. Button Component with variation
+     *
+     * 5.Layout
+     * header.............. Page Global Header.
+     * Footer............... Page Global Footer.
+     * main................ Page Main Content Area
+     * offcanvas................. Offcanvas Layout used on Global Component
+     *
+     *
+     * 6.COMPONENTS
+     *
+
+   ============================================== */
+
+// 1. Settings
+
+@import "settings/path";
+@import "settings/global-vars";
+// Custom variable Bootstrapped Only
+@import "bootstrap/scss/functions";
+@import "settings/bootstrap-variables";
+
+$enable-dark-mode: false;
+
+// Bootstrap Functions
+@import "bootstrap/scss/variables";
+// Include bootstrap remainder of variables
+@import "global/map";
+
+@import "bootstrap/scss/maps";
+
+// 2. Tools : Include remainder of required parts Tools
+@import "bootstrap/scss/mixins";
+@import "tools/mixins";
+
+//3. GENERIC
+@import "bootstrap/scss/root";
+// Root scss
+@import "bootstrap/scss/reboot";
+// Normalize Scss
+@import "settings/fonts";
+
+/** Extra layer of bootstrap Only */
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/offcanvas";
+
+// 4. Elements
+@import "elements/config";
+@import "elements/typo";
+@import "bootstrap/scss/images";
+@import "elements/grids";
+@import "elements/btn";
+@import "elements/dropdown";
+
+// 5 . Common Layout
+@import 'layouts/header';
+@import 'layouts/footer';
+
+// 6 . Common Component
+// @import './components'; eg
+
+// 1. Settings - Utilities
+@import "settings/utilities";
+
+@import "bootstrap/scss/utilities";
+
+// 8. Utitlities Override
+$utilities: map-merge(
+        $utilities,
+        (
+            "cursor": (
+                property: cursor,
+                class: cursor,
+                responsive: true,
+                values: auto pointer grab,
+            ),
+        )
+);
+
+// Inertia Progress bar
+#nprogress {
+    position: fixed;
+    isolation: isolate;
+    z-index: 9998;
+    .peg {
+        box-shadow: 0 0 10px #fff, 0 0 5px #fff !important;
+    }
+
+    .bar {
+        height: 4px !important;
+        z-index: 9999 !important;
+    }
+
+    .spinner {
+        top: 0 !important;
+        right: 0 !important;
+        background: rgba(0, 0, 0, .6);
+        width: 100%;
+        height: 100%;
+        display: flex !important;
+
+        &-icon {
+            width: 40px !important;
+            margin: auto;
+            height: 40px !important;
+            border: solid 4px transparent !important;
+            border-top-color: #fff !important;
+            border-left-color: #fff !important;
+        }
+    }
+}
+
+body:has(#nprogress) {
+  pointer-events: none;
+}
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "bootstrap/scss/utilities/api";
+
+// Don't Add anything below this.

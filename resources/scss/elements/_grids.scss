@@ -1,0 +1,47 @@
+.container {
+    --sm-gutter-x: var(--grid-space-x);
+
+    .row {
+        --sm-gutter-x: var(--grid-space-x);
+
+        &-sm {
+            --sm-gutter-x: 2.5rem
+        }
+
+        &-xs {
+            --sm-gutter-x: 1.8rem
+        }
+    }
+
+    &-fluid {
+        max-width: 100%;
+        --sm-gutter-x: 3rem;
+
+        > .row-sm {
+            --sm-gutter-x: 3rem;
+        }
+
+        > .row-xs {
+            --sm-gutter-x: 1.8rem
+        }
+    }
+
+    &-fluid-negative {
+        --sm-gutter-x: 3rem;
+
+        margin-left: calc(var(--sm-gutter-x) * -0.5);
+        margin-right: calc(var(--sm-gutter-x) * -0.5);
+    }
+}
+
+.gy-xs {
+    --sm-gutter-y: 1.8rem;
+}
+
+.gy-xxs {
+    --sm-gutter-y: 1rem;
+}
+
+.gx-0 {
+    --sm-gutter-x: 0 !important
+}

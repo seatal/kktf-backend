@@ -1,0 +1,11 @@
+@import 'prime-mixin';
+
+@layer primevue {
+    @import 'prime-common';
+
+    @import 'prime-datatable';
+    @import 'prime-paginator';
+    @import 'prime-dropdown';
+    @import 'prime-filter';
+    @import 'prime-stepper';
+}

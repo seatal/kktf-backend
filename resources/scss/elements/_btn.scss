@@ -1,0 +1,307 @@
+.btn {
+    --sm-btn-padding-x: 2.4rem;
+    --sm-btn-padding-y: 1rem;
+    --sm-btn-font-size: var(--step-n1);
+    --sm-btn-line-height: 1.3;
+    --sm-btn-disabled-opacity: 1;
+    --sm-btn-font-weight: $font-weight-medium;
+    --sm-btn-disabled-bg: #ebefe9;
+    --sm-btn-disabled-color: #8fa385;
+    --sm-btn-disabled-border-color: #ebefe9;
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    gap: 4px;
+
+    &:focus-visible {
+        --sm-btn-padding-x: 2.4rem;
+        outline-offset: 1px;
+        outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    @include media-breakpoint-up(sm) {
+        --sm-btn-line-height: 1.4;
+    }
+
+    @include media-breakpoint-up(lg) {
+        --sm-btn-line-height: 1.4;
+        --sm-btn-padding-x: 3.2rem;
+        --sm-btn-padding-y: 1rem;
+
+        &:focus-visible {
+            --sm-btn-padding-x: 3.2rem;
+        }
+    }
+
+    &-lg {
+        --sm-btn-padding-x: 3.2rem;
+        --sm-btn-padding-y: 1rem;
+
+        @include media-breakpoint-up(lg) {
+            --sm-btn-padding-x: 4.8rem;
+            --sm-btn-padding-y: 1.2rem;
+        }
+    }
+
+    &-sm {
+        --sm-btn-padding-x: 2rem;
+        --sm-btn-padding-y: 0.8rem;
+        --sm-btn-font-size: var(--step-n2);
+
+        @include media-breakpoint-up(lg) {
+            --sm-btn-padding-x: 2.4rem;
+            --sm-btn-padding-y: 1rem;
+        }
+    }
+
+    &-xs {
+        --sm-btn-padding-x: 1.4rem;
+        --sm-btn-padding-y: 0.8rem;
+        --sm-btn-font-size: var(--step-n2);
+
+        @include media-breakpoint-up(lg) {
+            --sm-btn-padding-x: 1.6rem;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+        &::before {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    &-primary {
+        color: $brand-green-dark !important;
+        box-shadow: inset 0 0 0 0.1rem $brand-green;
+        background-color: $brand-green-mid;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            box-shadow: inset 0 0 0 0.1rem $brand-green-dark;
+            background-color: $brand-green !important;
+        }
+    }
+
+    &-red {
+        box-shadow: inset 0 0 0 0.1rem $brand-red;
+        background-color: $brand-red-light;
+        color: $brand-red-dark !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            box-shadow: inset 0 0 0 0.1rem $brand-red-dark;
+            background-color: $brand-red !important;
+        }
+    }
+
+    &-secondary {
+        box-shadow: inset 0 0 0 0.1rem $brand-gray-mid;
+        background-color: $brand-gray-light;
+        color: $brand-green-dark !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            box-shadow: inset 0 0 0 0.1rem $brand-gray-dark;
+            background-color: $brand-gray-dark !important;
+        }
+    }
+
+    // &-success {
+    //     box-shadow: inset 0 0 0 0.1rem $success;
+    //     background-color: $success;
+
+    //     &:hover,
+    //     &:active,
+    //     &:focus-visible {
+    //         color: $white !important;
+    //         box-shadow: inset 0 0 0 0.1rem $green-600;
+    //     }
+    // }
+
+    &-outline-primary {
+        box-shadow: inset 0 0 0 0.1rem $brand-green;
+        background-color: transparent;
+        color: $brand-green !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $brand-green !important;
+            background-color: $brand-green-mid;
+        }
+    }
+
+    &-outline-red {
+        box-shadow: inset 0 0 0 0.1rem $brand-red;
+        background-color: transparent;
+        color: $brand-red !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            background-color: $brand-red-light;
+            color: $brand-red-dark !important;
+        }
+    }
+
+    &-outline-secondary {
+        box-shadow: inset 0 0 0 0.1rem $brand-gray-mid;
+        background-color: transparent;
+        color: $brand-green-dark !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            box-shadow: inset 0 0 0 0.1rem $brand-gray-dark;
+            background-color: $brand-gray-light;
+        }
+    }
+
+    &--border-radius-sm {
+        border-radius: 0.5rem;
+    }
+
+    &--border-radius-round {
+        border-radius: 10rem;
+    }
+
+    &:active {
+        background-color: inherit;
+    }
+
+    &:disabled,
+    &.disabled {
+        --sm-btn-disabled-bg: #dee2e6;
+        --sm-btn-disabled-color: #000;
+        --sm-btn-disabled-border-color: #dee2e6;
+        color: var(--sm-btn-disabled-color) !important;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    svg.svg-sm {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.rotate-180 {
+    rotate: 180deg;
+}
+
+.btn-action {
+    cursor: pointer;
+    user-select: none;
+    vertical-align: bottom;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: 0 .4rem;
+    border-radius: 6px;
+    height: 2.6rem;
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    gap: 4px;
+
+    &:has(svg) {
+        padding: 0 .6rem 0 .4rem;
+    }
+
+    &-primary {
+        color: $white !important;
+        box-shadow: inset 0 0 0 0.1rem $primary;
+        background-color: $primary;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            box-shadow: inset 0 0 0 0.1rem $brand-green-dark;
+            background-color: $primary;
+        }
+    }
+
+    &-secondary {
+        box-shadow: inset 0 0 0 0.1rem $brand-red;
+        background-color: $brand-red;
+        color: $white !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            box-shadow: inset 0 0 0 0.1rem $brand-red-dark;
+            background-color: $brand-red;
+        }
+    }
+
+    &-outline-primary {
+        box-shadow: inset 0 0 0 0.1rem $brand-green-dark;
+        background-color: transparent;
+        color: $brand-green-dark !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            background-color: $primary;
+        }
+    }
+
+    &-outline-secondary {
+        box-shadow: inset 0 0 0 0.1rem $brand-red-dark;
+        background-color: transparent;
+        color: $brand-red-dark !important;
+
+        &:hover,
+        &:active,
+        &:focus-visible {
+            color: $white !important;
+            background-color: $brand-red;
+        }
+    }
+
+    &:focus-visible {
+        outline-offset: 1px;
+        outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    span:empty {
+        display: none !important;
+    }
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+}

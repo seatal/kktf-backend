@@ -1,0 +1,60 @@
+@mixin focused() {
+	outline: $focusOutline;
+    outline-offset: $focusOutlineOffset;
+    box-shadow: $focusShadow;
+}
+
+@mixin focused-inset() {
+	outline: $focusOutline;
+    outline-offset: -1 * $focusOutlineOffset;
+    box-shadow: inset $focusShadow;
+}
+
+@mixin focused-input() {
+	outline: $focusOutline;
+    outline-offset: $inputFocusOutlineOffset;
+    box-shadow: $focusShadow;
+	border-color: $inputFocusBorderColor !important;
+    background-color: $brand-green-light !important;
+}
+
+@mixin focused-listitem() {
+	outline: $focusOutline;
+    outline-offset: $focusOutlineOffset;
+    box-shadow: $inputListItemFocusShadow;
+}
+
+@mixin invalid-input() {
+	border-color: $inputErrorBorderColor;
+}
+
+@mixin action-icon($enabled: true) {
+    width: $actionIconWidth;
+    height: $actionIconHeight;
+    color: $actionIconColor;
+    border: $actionIconBorder;
+    background: $actionIconBg;
+    border-radius: $actionIconBorderRadius !important;
+    transition: $actionIconTransition;
+    outline-color: transparent;
+
+    @if $enabled {
+        &:enabled:hover {
+            @include action-icon-hover();
+        }
+    } @else {
+        &:hover {
+            @include action-icon-hover();
+        }
+    }
+
+    &:focus-visible {
+        @include focused();
+    }
+}
+
+@mixin action-icon-hover() {
+    color: $actionIconHoverColor;
+    border-color: $actionIconHoverBorderColor;
+    background: $actionIconHoverBg;
+}

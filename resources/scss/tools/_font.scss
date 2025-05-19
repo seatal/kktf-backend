@@ -1,0 +1,24 @@
+// Placeholder
+// eg: @include bodyFont();
+
+/* stylelint-disable */
+
+@mixin bodyFont {
+    /* Variable fonts usage: */
+    font-family: "Public Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    @supports (font-variation-settings: normal) {
+        font-family: "Public Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+}
+
+@mixin headingFont {
+    /* Variable fonts usage: */
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}

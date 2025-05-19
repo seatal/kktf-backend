@@ -1,0 +1,28 @@
+.#{$global} {
+    &-app-portal {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        @include media-breakpoint-up(xl) {
+            display: grid;
+            grid-template-columns: 25rem calc(100% - 25rem);
+        }
+
+        .theme-header {
+            border: 0;
+        }
+    }
+
+    &-main {
+        padding: 2rem;
+        overflow-x: clip;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        @include media-breakpoint-up(xl) {
+            margin-left: 0;
+        }
+    }
+}

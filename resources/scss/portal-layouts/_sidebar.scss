@@ -1,0 +1,172 @@
+.#{$global} {
+    &-sidebar {
+        background: $brand-green-dark !important;
+        padding-bottom: 2rem;
+        padding-top: 90px;
+
+        @include media-breakpoint-up(xl) {
+            position: sticky;
+            top: 0;
+            height: 100dvh;
+            bottom: 0;
+            will-change: transform;
+        }
+
+        &--public {
+            @include media-breakpoint-up(lg) {
+                height: 0;
+                position: relative;
+                display: none;
+            }
+        }
+
+        .nav-list-wrapper {
+            height: calc(100dvh - 100px);
+            overflow: auto;
+            padding-top: 12px;
+        }
+
+        .nav-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .nav-list a,
+        .nav-list .nav-item {
+            all: unset;
+            box-sizing: border-box;
+            width: 100%;
+            color: $white;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            @extend .p-sidebar;
+            cursor: pointer;
+            padding-block: 1rem;
+            padding-inline: 2rem;
+            @include bodyFont();
+
+            &:hover {
+                color: rgba($color: $white, $alpha: 0.65)
+            }
+        }
+
+        .nav-list > li {
+            margin-inline: 1rem 0;
+            margin-bottom: 0;
+
+            &.active > a,
+            &.active > .nav-item,
+            &:has(header:not(.collapsed)[aria-expanded="true"]) > .nav-item {
+                background: $brand-green-lighter;
+                position: relative;
+                border-radius: 100vw 0 0 100vw;
+                color: $brand-green-dark;
+                min-height: 44px;
+
+                &:before,
+                &:after {
+                    --border-radius: 1rem;
+
+                    content: "";
+                    position: absolute;
+                    width: var(--border-radius);
+                    height: var(--border-radius);
+                    right: 0rem;
+                    background: $brand-green-dark;
+                }
+
+                &:before {
+                    border-radius: 0 0 var(--border-radius);
+                    top: calc(var(--border-radius) * -1);
+                    box-shadow: 6px 6px 0 5px $brand-green-lighter;
+                }
+
+                &:after {
+                    border-radius: 0 var(--border-radius) 0 0;
+                    bottom: calc(var(--border-radius) * -1);
+                    box-shadow: 6px -6px 0 5px $brand-green-lighter;
+                }
+            }
+        }
+
+        .nav-dropdown-li {
+            position: relative;
+
+            span::after {
+                width: 2rem;
+                height: 2rem;
+                margin-left: auto;
+                content: "";
+                background-repeat: no-repeat;
+                background-size: 2rem;
+                transition: transform 0.15s ease-in-out;
+                will-change: transform, background-image;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f4ecee'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+
+            button:not(.collapsed)[aria-expanded="true"] span::after {
+                transform: rotate(-180deg);
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f4ecee'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+
+            &.active span::after {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+            }
+        }
+
+        .nav-submenu {
+            color: $white;
+            margin: 0 1.5rem 0 2rem;
+            padding: 1rem 0;
+            border-radius: 0 10px 10px 0;
+            overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: '';
+                border-left: 4px solid rgba($color: $brand-offwhite-light, $alpha: 0.2);
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 1rem;
+                border-radius: 0 0 8px 8px;
+            }
+
+            li {
+                list-style: none;
+
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+
+                &.active {
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        border-left: 4px solid rgba($color: $brand-offwhite-light, $alpha: 0.3);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        overflow: hidden;
+                    }
+
+                    &:last-child::before {
+                        border-radius: 0 0 8px 8px;
+                    }
+
+                    a,
+                    .nav-item {
+                        background-color: rgba($color: $brand-offwhite-light, $alpha: 0.1);
+                        border-radius: 0 6px 6px 0;
+                    }
+                }
+            }
+        }
+    }
+}
